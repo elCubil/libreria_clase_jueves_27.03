@@ -1,0 +1,25 @@
+name: Compilar Código
+
+on:
+  push:
+    branches:
+       - main
+       - nueva_rama
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+      - name: Instalar MinGW y CMake
+        run: |
+          sudo apt update
+          sudo apt install -y mingw-w64 cmake
+      - name: Crear carpeta build
+        run: mkdir build
+      - name: Configurar CMake
+        run: cmake -G "MinGW Makefiles" -B build .
+      - name: Compilar código
+        run: cmake --build build
