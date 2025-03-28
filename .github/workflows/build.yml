@@ -20,7 +20,7 @@ jobs:
       - name: Crear carpeta build
         run: mkdir build
       - name: Configurar CMake
-        run: cmake -G "MinGW Makefiles" -B build .
+        run: cmake -G "Unix Makefiles" -B build .
       - name: Compilar código
         run: cmake --build build
       - name: Ejecutar el programa
